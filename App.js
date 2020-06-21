@@ -1,6 +1,11 @@
 import React from 'react';
-import WelcomeScreen from './app/screens/WelcomeScreen';
+import Screen from './app/components/Screen';
+import Icon from './app/components/Icon';
 
 export default function App() {
-  return <WelcomeScreen />;
+  return (
+    <Screen>
+      <Icon name='email' size={50} backgroundColor='red' />
+    </Screen>
+  );
 }
