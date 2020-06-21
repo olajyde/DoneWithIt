@@ -5,11 +5,11 @@ import AppText from './AppText';
 
 const Card = ({ title, subTitle, image }) => {
   return (
-    <View style={style.card}>
-      <Image source={image} />
+    <View style={styles.card}>
+      <Image style={styles.image} source={image} />
       <View style={styles.detailsContainer}>
         <AppText style={styles.titleText}>{title}</AppText>
-        <AppText style={style.subtitleText}>{subTitle}</AppText>
+        <AppText style={styles.subtitleText}>{subTitle}</AppText>
       </View>
     </View>
   );
