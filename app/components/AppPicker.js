@@ -1,17 +1,25 @@
 import React, { useState } from 'react';
 import {
   View,
-  StyleSheet,
   TouchableWithoutFeedback,
   Modal,
   Button,
+  FlatList,
+  StyleSheet,
 } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import defaultStyles from '../config/styles';
 import Screen from './Screen';
 import AppText from './AppText';
+import PickerItem from './PickerItem';
 
-const AppPicker = ({ icon, placeholder, ...rest }) => {
+const AppPicker = ({
+  icon,
+  items,
+  selectedItem,
+  onSelectItem,
+  placeholder,
+}) => {
   const [isVisible, setIsVisible] = useState(false);
 
   return (
@@ -26,7 +34,9 @@ const AppPicker = ({ icon, placeholder, ...rest }) => {
               color={defaultStyles.colors.meduimGrey}
             />
           )}
-          <AppText style={styles.text}>{placeholder}</AppText>
+          <AppText style={styles.text}>
+            {selectedItem ? selectedItem.label : placeholder}
+          </AppText>
           <MaterialCommunityIcons
             name='chevron-down'
             size={20}
@@ -37,6 +47,19 @@ const AppPicker = ({ icon, placeholder, ...rest }) => {
       <Modal visible={isVisible} animationType='slide'>
         <Screen>
           <Button title='Close' onPress={() => setIsVisible(false)} />
+          <FlatList
+            data={items}
+            keyExtractor={(item) => item.value.toString()}
+            renderItem={({ item }) => (
+              <PickerItem
+                label={item.label}
+                onPress={() => {
+                  setIsVisible(false);
+                  onSelectItem(item);
+                }}
+              />
+            )}
+          />
         </Screen>
       </Modal>
     </>
