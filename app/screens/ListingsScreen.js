@@ -28,7 +28,7 @@ const ListingsScreen = () => {
         renderItem={({ item }) => (
           <Card
             title={item.title}
-            subTitle={`$ ${item.price}`}
+            subTitle={`$${item.price}`}
             image={item.image}
           />
         )}
