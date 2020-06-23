@@ -1,10 +1,16 @@
 import React from 'react';
 import { useFormikContext } from 'formik';
 
-import AppPicker from '../AppPicker';
+import AppPicker from '../Picker';
 import ErrorMessage from './ErrorMessage';
 
-const AppFormPicker = ({ name, items, placeholder, PickerItemComponent }) => {
+const FormPicker = ({
+  name,
+  items,
+  placeholder,
+  PickerItemComponent,
+  numberOfColumns,
+}) => {
   const { errors, touched, values, setFieldValue } = useFormikContext();
 
   return (
@@ -15,10 +21,11 @@ const AppFormPicker = ({ name, items, placeholder, PickerItemComponent }) => {
         selectedItem={values[name]}
         onSelectItem={(item) => setFieldValue(name, item)}
         PickerItemComponent={PickerItemComponent}
+        numberOfColumns={numberOfColumns}
       />
       <ErrorMessage visible={touched[name]} error={errors[name]} />
     </>
   );
 };
 
-export default AppFormPicker;
+export default FormPicker;

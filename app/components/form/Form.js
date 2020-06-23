@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik } from 'formik';
 
-const AppForm = ({ initialValues, children, onSubmit, validationSchema }) => {
+const Form = ({ initialValues, children, onSubmit, validationSchema }) => {
   return (
     <Formik
       initialValues={initialValues}
@@ -13,4 +13,4 @@ const AppForm = ({ initialValues, children, onSubmit, validationSchema }) => {
   );
 };
 
-export default AppForm;
+export default Form;

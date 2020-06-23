@@ -10,7 +10,7 @@ import {
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import defaultStyles from '../config/styles';
 import Screen from './Screen';
-import AppText from './AppText';
+import Text from './Text';
 import PickerItem from './PickerItem';
 
 const AppPicker = ({
@@ -20,6 +20,7 @@ const AppPicker = ({
   onSelectItem,
   placeholder,
   PickerItemComponent = PickerItem,
+  numberOfColumns = 1,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -36,9 +37,9 @@ const AppPicker = ({
             />
           )}
           {selectedItem ? (
-            <AppText style={styles.text}>{selectedItem.label}</AppText>
+            <Text style={styles.text}>{selectedItem.label}</Text>
           ) : (
-            <AppText style={styles.placeholderText}>{placeholder}</AppText>
+            <Text style={styles.placeholderText}>{placeholder}</Text>
           )}
           <MaterialCommunityIcons
             name='chevron-down'
@@ -52,10 +53,11 @@ const AppPicker = ({
           <Button title='Close' onPress={() => setIsVisible(false)} />
           <FlatList
             data={items}
+            numColumns={numberOfColumns}
             keyExtractor={(item) => item.value.toString()}
             renderItem={({ item }) => (
               <PickerItemComponent
-                label={item.label}
+                item={item}
                 onPress={() => {
                   setIsVisible(false);
                   onSelectItem(item);

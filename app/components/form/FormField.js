@@ -2,15 +2,15 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { useFormikContext } from 'formik';
 
-import AppTextInput from '../AppTextInput';
+import TextInput from '../TextInput';
 import ErrorMessage from './ErrorMessage';
 
-const AppFormField = ({ name, ...rest }) => {
+const FormField = ({ name, ...rest }) => {
   const { handleChange, setFieldTouched, touched, errors } = useFormikContext();
 
   return (
     <>
-      <AppTextInput
+      <TextInput
         {...rest}
         onBlur={() => setFieldTouched(name)}
         onChangeText={handleChange(name)}
@@ -22,4 +22,4 @@ const AppFormField = ({ name, ...rest }) => {
 
 const styles = StyleSheet.create({});
 
-export default AppFormField;
+export default FormField;
