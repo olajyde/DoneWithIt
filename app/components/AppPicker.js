@@ -19,6 +19,7 @@ const AppPicker = ({
   selectedItem,
   onSelectItem,
   placeholder,
+  PickerItemComponent = PickerItem,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -53,7 +54,7 @@ const AppPicker = ({
             data={items}
             keyExtractor={(item) => item.value.toString()}
             renderItem={({ item }) => (
-              <PickerItem
+              <PickerItemComponent
                 label={item.label}
                 onPress={() => {
                   setIsVisible(false);
