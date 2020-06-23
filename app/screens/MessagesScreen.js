@@ -9,13 +9,14 @@ const initialMessages = [
   {
     id: 1,
     title: 'T1',
-    description: 'D1',
+    description: 'Hey! Is this item still available?',
     image: require('../assets/mosh.jpg'),
   },
   {
     id: 2,
     title: 'T2',
-    description: 'D2',
+    description:
+      "I'm interested in this item. When will you bw able to post it?",
     image: require('../assets/jyd.jpg'),
   },
 ];
@@ -29,7 +30,7 @@ const MessagesScreen = () => {
   };
 
   return (
-    <Screen>
+    <Screen style={styles.container}>
       <FlatList
         data={messages}
         keyExtractor={(message) => message.id.toString()}
